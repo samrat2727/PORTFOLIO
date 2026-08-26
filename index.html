@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S M Samrat Mahmud | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background: radial-gradient(circle at top center, #0b192c 0%, #030712 100%); color: #ffffff; min-height: 100vh; padding: 20px 10px; }
+        .container { max-width: 800px; margin: 0 auto; position: relative; }
+        
+        /* Header & Navigation */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; position: relative; }
+        .logo { font-size: 1.4rem; font-weight: 700; }
+        .menu-btn { font-size: 1.4rem; cursor: pointer; padding: 5px; color: #fff; border: none; background: none; }
+        
+        /* Mobile Dropdown Menu */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background: #0f223d;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            width: 200px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 100;
+        }
+
+        .dropdown-menu.active {
+            display: flex;
+        }
+
+        .dropdown-menu a {
+            color: #d1d5db;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.2s ease;
+        }
+
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover { background: #1a3459; color: #10b981; }
+
+        /* Hero Section */
+        .hero { text-align: center; padding: 30px 0; }
+        .profile-img { width: 130px; height: 130px; border-radius: 50%; border: 3px solid #1e3a5f; object-fit: cover; margin-bottom: 20px; }
+        h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 8px; }
+        .subtitle { font-size: 1.2rem; color: #9ca3af; margin-bottom: 15px; }
+        .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(234, 179, 8, 0.1); border: 1px solid rgba(234, 179, 8, 0.4); color: #eab308; padding: 6px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; margin-bottom: 15px; }
+        .location { color: #9ca3af; margin-bottom: 20px; font-size: 0.95rem; }
+        .bio { color: #9ca3af; line-height: 1.6; font-size: 1.05rem; margin-bottom: 25px; }
+        .bio span { color: #fff; font-weight: 600; }
+        
+        .hero-btns { display: flex; gap: 12px; justify-content: center; margin-bottom: 40px; }
+        .btn-green { background: #10b981; color: #000; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; }
+        .btn-outline { background: transparent; color: #fff; border: 1px solid #374151; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; }
+
+        /* Sections */
+        .section-title { font-size: 1.8rem; text-align: center; margin: 40px 0 20px; font-weight: 700; position: relative; }
+        .section-title::after { content: ''; display: block; width: 50px; height: 3px; background: #10b981; margin: 8px auto 0; border-radius: 2px; }
+
+        /* Skills Badges */
+        .skills-group { margin-bottom: 25px; }
+        .skills-group h3 { font-size: 1rem; color: #9ca3af; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .badge-list { display: flex; flex-wrap: wrap; gap: 10px; }
+        .tech-pill { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 8px 16px; border-radius: 10px; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; color: #e5e7eb; }
+        .tech-pill i { color: #10b981; }
+
+        /* Education Card */
+        .edu-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 20px; display: flex; gap: 15px; margin-bottom: 15px; }
+        .edu-icon { background: rgba(16, 185, 129, 0.1); color: #10b981; min-width: 45px; height: 45px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+        .edu-info h4 { font-size: 1.1rem; color: #fff; }
+        .edu-info p { color: #9ca3af; font-size: 0.9rem; margin-top: 4px; }
+
+        /* Social Links */
+        .social-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px; }
+        .social-btn { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 10px 20px; border-radius: 8px; color: #fff; text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+
+        /* Contact Form */
+        .contact-box { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 14px; padding: 25px; margin-top: 20px; }
+        .input-group { position: relative; margin-bottom: 15px; }
+        .input-group i { position: absolute; left: 15px; top: 15px; color: #6b7280; }
+        .input-group input, .input-group textarea { width: 100%; background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 12px 12px 12px 42px; color: #fff; outline: none; font-size: 0.95rem; }
+        .input-group textarea { height: 100px; resize: none; }
+        .input-group input:focus, .input-group textarea:focus { border-color: #10b981; }
+        
+        .submit-btn { width: 100%; background: #10b981; color: #000; border: none; padding: 12px; border-radius: 8px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1rem; }
+        .download-cv { width: 100%; background: transparent; border: 1px solid #10b981; color: #10b981; padding: 12px; border-radius: 8px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1rem; margin-top: 15px; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <nav>
+        <div class="logo">S M Samrat Mahmud</div>
+        <button class="menu-btn" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
+        
+        <!-- Dropdown Menu Links -->
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="#about" onclick="toggleMenu()"><i class="fa-regular fa-user"></i> About</a>
+            <a href="#skills" onclick="toggleMenu()"><i class="fa-solid fa-code"></i> Skills</a>
+            <a href="#education" onclick="toggleMenu()"><i class="fa-solid fa-graduation-cap"></i> Education</a>
+            <a href="#contact" onclick="toggleMenu()"><i class="fa-regular fa-envelope"></i> Contact</a>
+            <a href="https://github.com/samrat2727" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/s-m-samrat-mahmud-05aa323a8" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero" id="about">
+        <img src="https://avatars.githubusercontent.com/samrat2727" alt="Profile" class="profile-img">
+        <h1>S M Samrat Mahmud</h1>
+        <div class="subtitle">CSE Student & Aspiring AI/ML Engineer</div>
+        <div class="badge"><i class="fa-solid fa-trophy"></i> Competitive Programmer</div>
+        <div class="location"><i class="fa-solid fa-location-dot" style="color: #10b981;"></i> Dhaka, Bangladesh</div>
+        <p class="bio">
+            Computer Science student at <span>Northern University Bangladesh</span>. Passionate about problem-solving with C/C++, exploring <span>Machine Learning & Deep Learning</span>, and building scalable software solutions.
+        </p>
+        <div class="hero-btns">
+            <a href="#skills" class="btn-green">View My Work</a>
+            <a href="#contact" class="btn-outline">Get in Touch</a>
+        </div>
+    </div>
+
+    <!-- Tech Stack / Skills -->
+    <h2 class="section-title" id="skills">Skills & Technologies</h2>
+    
+    <div class="skills-group">
+        <h3><i class="fa-solid fa-code"></i> Programming Languages</h3>
+        <div class="badge-list">
+            <div class="tech-pill"><i class="fa-solid fa-terminal"></i> C/C++</div>
+            <div class="tech-pill"><i class="fa-brands fa-python"></i> Python</div>
+            <div class="tech-pill"><i class="fa-brands fa-html5"></i> HTML5</div>
+            <div class="tech-pill"><i class="fa-brands fa-css3-alt"></i> CSS3</div>
+        </div>
+    </div>
+
+    <div class="skills-group">
+        <h3><i class="fa-solid fa-microchip"></i> Frameworks & ML Tools</h3>
+        <div class="badge-list">
+            <div class="tech-pill"><i class="fa-solid fa-brain"></i> PyTorch</div>
+            <div class="tech-pill"><i class="fa-solid fa-chart-line"></i> NumPy & Pandas</div>
+            <div class="tech-pill"><i class="fa-solid fa-robot"></i> Machine Learning</div>
+        </div>
+    </div>
+
+    <div class="skills-group">
+        <h3><i class="fa-solid fa-screwdriver-wrench"></i> Tools & Platforms</h3>
+        <div class="badge-list">
+            <div class="tech-pill"><i class="fa-brands fa-github"></i> GitHub</div>
+            <div class="tech-pill"><i class="fa-brands fa-git-alt"></i> Git</div>
+            <div class="tech-pill"><i class="fa-brands fa-linux"></i> Linux (Ubuntu)</div>
+            <div class="tech-pill"><i class="fa-solid fa-file-code"></i> VS Code</div>
+        </div>
+    </div>
+
+    <div class="skills-group">
+        <h3><i class="fa-solid fa-gears"></i> Technical Concepts</h3>
+        <div class="badge-list">
+            <div class="tech-pill"><i class="fa-solid fa-diagram-project"></i> Data Structures</div>
+            <div class="tech-pill"><i class="fa-solid fa-layer-group"></i> Algorithms</div>
+            <div class="tech-pill"><i class="fa-solid fa-puzzle-piece"></i> Problem Solving</div>
+            <div class="tech-pill"><i class="fa-solid fa-cube"></i> OOP</div>
+        </div>
+    </div>
+
+    <!-- Education Section -->
+    <h2 class="section-title" id="education">Education</h2>
+    
+    <div class="edu-card">
+        <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+        <div class="edu-info">
+            <h4>Northern University Bangladesh</h4>
+            <p>B.Sc. in Computer Science and Engineering</p>
+            <p><i class="fa-regular fa-calendar"></i> Enrolled Student | Dhaka, Bangladesh</p>
+        </div>
+    </div>
+
+    <!-- Connect & Contact -->
+    <h2 class="section-title" id="contact">Get In Touch</h2>
+    <p style="text-align: center; color: #9ca3af; margin-bottom: 20px;">Feel free to reach out for collaborations, opportunities, or just a friendly chat!</p>
+
+    <div class="social-btns">
+        <a href="https://github.com/samrat2727" target="_blank" class="social-btn"><i class="fa-brands fa-github"></i> GitHub</a>
+        <a href="https://www.linkedin.com/in/s-m-samrat-mahmud-05aa323a8" target="_blank" class="social-btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <a href="mailto:samrat@example.com" class="social-btn"><i class="fa-regular fa-envelope"></i> Email</a>
+    </div>
+
+    <!-- Contact Form & Download CV -->
+    <div class="contact-box">
+        <h3 style="text-align: center; margin-bottom: 20px;">Send me a message</h3>
+        <form>
+            <div class="input-group">
+                <i class="fa-regular fa-user"></i>
+                <input type="text" placeholder="Your Name" required>
+            </div>
+            <div class="input-group">
+                <i class="fa-regular fa-envelope"></i>
+                <input type="email" placeholder="Your Email" required>
+            </div>
+            <div class="input-group">
+                <i class="fa-regular fa-comment"></i>
+                <textarea placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn"><i class="fa-regular fa-paper-plane"></i> Send Message</button>
+        </form>
+
+        <a href="#" class="download-cv"><i class="fa-solid fa-download"></i> Download CV</a>
+    </div>
+</div>
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('dropdownMenu');
+        menu.classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>
