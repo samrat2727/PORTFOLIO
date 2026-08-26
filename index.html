@@ -3,7 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S M Samrat Mahmud | Portfolio</title>
+    
+    <!-- LinkedIn Clean Card Preview & SEO Tags -->
+    <title>Portfolio</title>
+    <meta name="description" content="S M Samrat Mahmud">
+    <meta property="og:title" content="Portfolio" />
+    <meta property="og:description" content="S M Samrat Mahmud" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://samrat2727.github.io/PORTFOLIO/" />
+    <meta property="og:image" content="https://avatars.githubusercontent.com/samrat2727" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
@@ -62,8 +71,10 @@
         .bio span { color: #fff; font-weight: 600; }
         
         .hero-btns { display: flex; gap: 12px; justify-content: center; margin-bottom: 40px; }
-        .btn-green { background: #10b981; color: #000; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; }
-        .btn-outline { background: transparent; color: #fff; border: 1px solid #374151; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; }
+        .btn-green { background: #10b981; color: #000; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: 0.3s; }
+        .btn-green:hover { background: #059669; }
+        .btn-outline { background: transparent; color: #fff; border: 1px solid #374151; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.3s; }
+        .btn-outline:hover { border-color: #10b981; color: #10b981; }
 
         /* Sections */
         .section-title { font-size: 1.8rem; text-align: center; margin: 40px 0 20px; font-weight: 700; position: relative; }
@@ -76,11 +87,55 @@
         .tech-pill { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 8px 16px; border-radius: 10px; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; color: #e5e7eb; }
         .tech-pill i { color: #10b981; }
 
-        /* Education Card */
-        .edu-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 20px; display: flex; gap: 15px; margin-bottom: 15px; }
-        .edu-icon { background: rgba(16, 185, 129, 0.1); color: #10b981; min-width: 45px; height: 45px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
-        .edu-info h4 { font-size: 1.1rem; color: #fff; }
-        .edu-info p { color: #9ca3af; font-size: 0.9rem; margin-top: 4px; }
+        /* Education Card Styling */
+        .edu-card { 
+            background: rgba(255, 255, 255, 0.03); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            border-radius: 14px; 
+            padding: 22px; 
+            display: flex; 
+            gap: 18px; 
+            margin-bottom: 15px; 
+            position: relative;
+            align-items: flex-start;
+        }
+        .edu-icon { 
+            background: rgba(16, 185, 129, 0.1); 
+            color: #10b981; 
+            min-width: 48px; 
+            height: 48px; 
+            border-radius: 12px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 1.3rem; 
+        }
+        .edu-info { flex: 1; }
+        .edu-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; }
+        .edu-info h4 { font-size: 1.15rem; color: #fff; font-weight: 700; }
+        .edu-degree { color: #10b981; font-weight: 600; font-size: 0.98rem; margin-top: 4px; }
+        .semester-badge { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 6px; 
+            background: rgba(16, 185, 129, 0.12); 
+            color: #10b981; 
+            border: 1px solid rgba(16, 185, 129, 0.3); 
+            padding: 4px 12px; 
+            border-radius: 20px; 
+            font-size: 0.82rem; 
+            font-weight: 600; 
+        }
+        .semester-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background-color: #10b981;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .edu-details { color: #9ca3af; font-size: 0.9rem; margin-top: 10px; display: flex; gap: 15px; flex-wrap: wrap; }
+        .edu-details span { display: flex; align-items: center; gap: 6px; }
 
         /* Social Links */
         .social-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px; }
@@ -127,7 +182,7 @@
             Computer Science student at <span>Northern University Bangladesh</span>. Passionate about problem-solving with C/C++, exploring <span>Machine Learning & Deep Learning</span>, and building scalable software solutions.
         </p>
         <div class="hero-btns">
-            <a href="#skills" class="btn-green">View My Work</a>
+            <a href="https://github.com/samrat2727" target="_blank" class="btn-green">View My Work</a>
             <a href="#contact" class="btn-outline">Get in Touch</a>
         </div>
     </div>
@@ -180,9 +235,15 @@
     <div class="edu-card">
         <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
         <div class="edu-info">
-            <h4>Northern University Bangladesh</h4>
-            <p>B.Sc. in Computer Science and Engineering</p>
-            <p><i class="fa-regular fa-calendar"></i> Enrolled Student | Dhaka, Bangladesh</p>
+            <div class="edu-header">
+                <h4>Northern University Bangladesh</h4>
+                <div class="semester-badge">1st Year, 1st Semester</div>
+            </div>
+            <div class="edu-degree">B.Sc. in Computer Science and Engineering</div>
+            <div class="edu-details">
+                <span><i class="fa-solid fa-book-open"></i> Currently Enrolled</span>
+                <span><i class="fa-solid fa-location-dot"></i> Dhaka, Bangladesh</span>
+            </div>
         </div>
     </div>
 
